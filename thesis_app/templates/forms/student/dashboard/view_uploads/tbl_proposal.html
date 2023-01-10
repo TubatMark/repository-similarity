@@ -1,0 +1,41 @@
+{% extends "base/student_base.html" %}
+
+{% block title %}Proposal Document Upload{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ProposalUploadModal"
+        style="background-color:  #16524d; color: #fff; margin-bottom: 13px; margin-top: -8px;">
+        Upload Document
+    </button>
+    <br>
+    <table class="table table-bordered mx-auto " id="proposaluploadDatatable">
+        <thead bgcolor="grey" style="color: #fff; font-size: 13px;">
+            <tr>
+                <th>Title</th>
+                <th>Proponents</th>
+                <th>Data & Time</th>
+                <th>Result</th>
+                <th>Status</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <!--Data from backend-->
+        <tbody style="text-align:left;">
+            <tr style="color: black; text-align: left; font-size: 13px;">
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+</div>
+
+{% endblock content %}

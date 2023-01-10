@@ -1,0 +1,36 @@
+{% extends "base/panel_base.html" %}
+
+{% block title %}Uploaded Document For Proposal Defense{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <table class="table table-bordered mx-auto" id="proposalDatatable">
+        <thead bgcolor="grey" style="color: #fff; font-size: 13px;">
+            <tr>
+                <th>Title</th>
+                <th>Proponents</th>
+                <th>Date & Time</th>
+                <th>Result</th>
+                <th>Status</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <!--Data from backend-->
+        <tbody style="text-align:left;">
+            {% for proposal in proposals %}
+            <tr style="color: black; text-align: left; font-size: 13px;">
+                <td>{{proposal.student_title_p}}</td>
+                <td>{{proposal.student_proponents_p}}</td>
+                <td>{{proposal.uploaded_at|date:"D d M Y H:i:s" }}</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+{% endblock content %}

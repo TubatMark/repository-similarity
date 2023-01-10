@@ -1,0 +1,60 @@
+{% extends "base/admin_base.html" %}
+
+{% block title %}Thesis Records{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addModal"
+        style="background-color:  #16524d; color: #fff; margin-bottom: 13px; margin-top: -8px;">
+        Add Files - Repository
+    </button>
+    <br>
+    <table class="table table-bordered mx-auto " id="repositoryDatatable">
+        <thead bgcolor="grey" style="color: #fff; font-size:13px">
+            <tr>
+                <th style="width: 5%;">ID</th>
+                <th style="width: 25%;">Thesis Title</th>
+                <th style="width: 10%;">Proponents</th>
+                <th style="width: 35%;">File</th>
+                <th style="width: 30%;">Actions</th>
+            </tr>
+        </thead>
+        <!--Data from backend-->
+        <tbody style="text-align: left;">
+            {% for repo in repository %}
+            <tr style="color: black; text-align: left; font-size: 13px; ">
+                <th>{{ repo.id }}</th>
+                <th>{{ repo.title }}</th>
+                <th>{{ repo.proponents }}</th>
+                <th>{{ repo.pdf_file }}</th>
+                <td>
+                    <a class="btn btn-info btn-actions" title="view" data-bs-toggle="modal"
+                        data-bs-target="#viewModal{{repo.id}}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a class="btn btn-warning btn-actions" title="edit" data-bs-toggle="modal"
+                        data-bs-target="#editModal{{repo.id}}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a data-placement="top" data-toggle="tooltip" title="download" href="{{repo.pdf_file.url}}"
+                        class="btn btn-success btn-xs" data-title="Download" data-toggle="modal"
+                        data-target="#download"><i class="fa-solid fa-download"></i></a>
+                    <a data-placement="top" data-toggle="tooltip" title="delete"
+                        href="/DeleteRepositoryFiles/{{repo.id}}" class="btn btn-danger btn-xs" data-title="Delete"
+                        data-toggle="modal" data-target="#delete"><i class="fa-solid fa-trash"></i></a>
+                </td>
+                </td>
+            </tr>
+
+            <!-- include (requried here to get the PK)-->
+            {% include "forms/admin/edit_files_repository.html" %}
+            {% include "forms/admin/view_files_repository.html" %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "base/student_base.html" %}
+
+{% block title %}List Similar Document{% endblock title %}
+
+{% block content %}
+
+{% if similar_documents %}
+    <ul>
+        {% for doc_id in similar_documents %}
+            <li>{{ doc_id }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "base/admin_base.html" %}
+
+{% block title %}Uploaded Document For Final Defense{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    
+    <br>
+    <table class="table table-bordered mx-auto" id="finalDatatable">
+        <thead bgcolor="grey" style="color: #fff; font-size: 13px;">
+            <tr>
+                <th>Title</th>
+                <th>Proponents</th>
+                <th>Date & Time</th>
+                <th>Result</th>
+                <th>Status</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <!--Data from backend-->
+        <tbody style="text-align:left;">
+            {% for final in final_docs %}
+            <tr style="color: black; text-align: left; font-size: 13px;">
+                <td>{{final.student_title_f}}</td>
+                <td>{{final.student_proponents_f}}</td>
+                <td>{{final.uploaded_at|date:"D d M Y H:i:s" }}</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+{% endblock content %}

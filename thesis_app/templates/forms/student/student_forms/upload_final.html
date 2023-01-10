@@ -1,0 +1,45 @@
+<!-- Modal -->
+<div class="modal fade" id="FinalUploadModal" tabindex="-1" role="dialog" aria-labelledby="FinalUploadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="FinalUploadModalLabel">Final Defense Document Upload</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'upload_final_defense' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Title:</label>
+                            <div class="col-sm-4">
+                                {{ form.student_title_f }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Proponents:</label>
+                            <div class="col-sm-4">
+                                {{ form.student_proponents_f }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">File:</label>
+                            <div class="col-sm-4">
+                                {{ form.student_pdf_file_f }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label"></label>
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

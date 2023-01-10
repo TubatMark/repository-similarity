@@ -1,0 +1,45 @@
+{% extends "base/student_base.html" %}
+
+{% block title %}Study Digital Repository{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+    
+    <br>
+    <table class="table table-bordered mx-auto " id="studentRepositoryDatatable">
+        <thead bgcolor="grey" style="color: #fff; font-size:13px">
+            <tr>
+                <th style="width: 25%;">Thesis Title</th>
+                <th style="width: 15%;">Proponents</th>
+                <th style="width: 5%;">Actions</th>
+            </tr>
+        </thead>
+        <!--Data from backend-->
+        <tbody style="text-align: left;">
+            {% for repo in repository %}
+            <tr style="color: black; text-align: left; font-size: 13px; ">
+                <th>{{ repo.title }}</th>
+                <th>{{ repo.proponents }}</th>
+                <td>
+                    <a class="btn btn-info btn-actions" title="view" data-bs-toggle="modal"
+                        data-bs-target="#viewModal{{repo.id}}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a data-placement="top" data-toggle="tooltip" title="download" href="{{repo.pdf_file.url}}"
+                        class="btn btn-success btn-xs" data-title="Download" data-toggle="modal"
+                        data-target="#download"><i class="fa-solid fa-download"></i></a>
+                </td>
+                </td>
+            </tr>
+
+            <!-- include (requried here to get the PK)-->
+            {% include "forms/admin/view_files_repository.html" %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+
+{% endblock content %}

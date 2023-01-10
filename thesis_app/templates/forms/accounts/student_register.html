@@ -1,0 +1,48 @@
+<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Student Registration</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'register_student' %}" method="post">
+                    {% csrf_token %}
+                    <hr>
+                    {% if students %}
+                    {% for student in students %}
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light"> <i
+                                class="fa-regular fa-id-badge"></i></span>
+                        <input type="text" class="form-control" name="student_id" value="{{ student.Student_Id }}"
+                            max-length="40" placeholder="STUDENT ID" readonly>
+                    </div>
+                    <hr>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light"> <i class="fa-solid fa-at"></i></span>
+                        <input type="email" class="form-control" name="email" value="{{ student.Email }}"
+                            max-length="40" placeholder="EMAIL" readonly>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <hr>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light"> <i class="fa-solid fa-user-tie"></i></span>
+                        <input type="text" class="form-control" name="username" max-length="40" placeholder="USERNAME" required>
+                    </div>
+                    <hr>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light"> <i class="fa-solid fa-lock"></i></span>
+                        <input type="password" class="form-control" name="password" max-length="40" required>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
